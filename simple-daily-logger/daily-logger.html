@@ -1,0 +1,75 @@
+<script type="text/javascript">
+    RED.nodes.registerType('daily-logger', {
+        category: 'function',
+        color: '#E9D2C0',
+        defaults: {
+            name: { value: "" },
+            maxSize: {
+                value: 10,
+                required: true,
+                validate: function (v) {
+                    return !isNaN(v) && parseInt(Number(v)) == v && !isNaN(parseInt(v, 10)) && parseInt(v) >= 1;
+                }
+            },
+            maxFiles: {
+                value: 30,
+                required: true,
+                validate: function (v) {
+                    return !isNaN(v) && parseInt(Number(v)) == v && !isNaN(parseInt(v, 10)) && parseInt(v) >= 1;
+                }
+            },
+            datePattern: { value: "DD-MM-YYYY", required: true },
+            fileName: { value: "", },
+            logDirectory: { value: "/var/log", required: true },
+            localesArgument: { value: "tr-TR", required: true },
+            timeZone: { value: "Europe/Istanbul", required: true }
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "fa fa-history",
+        label: function () {
+            return this.name || "daily-logger";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="daily-logger">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxSize"><i class="icon-arrows-alt-v"></i> Max Size (MB)</label>
+        <input type="number" id="node-input-maxSize" placeholder="10" min="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-maxFiles"><i class="icon-copy"></i> Max Files (Days)</label>
+        <input type="number" id="node-input-maxFiles" placeholder="30" min="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-datePattern"><i class="icon-calendar"></i> Date Pattern</label>
+        <input type="text" id="node-input-datePattern" placeholder="DD-MM-YYYY">
+    </div>
+    <div class="form-row">
+        <label for="node-input-fileName"><i class="icon-file-alt"></i> File Name</label>
+        <input type="text" id="node-input-fileName" placeholder="daily">
+    </div>
+    <div class="form-row">
+        <label for="node-input-logDirectory"><i class="icon-folder-open"></i> Log Directory</label>
+        <input type="text" id="node-input-logDirectory" placeholder="/var/log">
+    </div>
+    <div class="form-row">
+        <label for="node-input-localesArgument"><i class="icon-globe"></i> Locales Argument</label>
+        <input type="text" id="node-input-localesArgument" placeholder="tr-TR">
+    </div>
+    <div class="form-row">
+        <label for="node-input-timeZone"><i class="icon-clock"></i> Time Zone</label>
+        <input type="text" id="node-input-timeZone" placeholder="Europe/Istanbul">
+    </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="daily-logger">
+    <p>A Node-RED node that creates a file-based logging system.</p>
+    <p>Send any payload to the node to logging the payload.</p>
+</script>

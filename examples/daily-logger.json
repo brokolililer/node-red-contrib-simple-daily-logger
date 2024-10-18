@@ -1,0 +1,150 @@
+[
+    {
+        "id": "f65674da3fcd3bc3",
+        "type": "tab",
+        "label": "Simple Daily Logger",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "15e7494e1d6557d5",
+        "type": "daily-logger",
+        "z": "f65674da3fcd3bc3",
+        "name": "",
+        "maxSize": 10,
+        "maxFiles": "30",
+        "datePattern": "DD-MM-YYYY",
+        "fileName": "lof",
+        "logDirectory": "C:\\my-log",
+        "localesArgument": "tr-TR",
+        "timeZone": "Europe/Istanbul",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "95d646cb30ca8250",
+        "type": "inject",
+        "z": "f65674da3fcd3bc3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "574c31b6be618d5b"
+            ]
+        ]
+    },
+    {
+        "id": "574c31b6be618d5b",
+        "type": "function",
+        "z": "f65674da3fcd3bc3",
+        "name": "info",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "15e7494e1d6557d5"
+            ]
+        ]
+    },
+    {
+        "id": "d899cbf16e5b8658",
+        "type": "daily-logger",
+        "z": "f65674da3fcd3bc3",
+        "name": "",
+        "maxSize": 10,
+        "maxFiles": "30",
+        "datePattern": "DD-MM-YYYY",
+        "fileName": "lof",
+        "logDirectory": "C:\\my-log",
+        "localesArgument": "tr-TR",
+        "timeZone": "Europe/Istanbul",
+        "x": 530,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "dccf22d4eab531cd",
+        "type": "inject",
+        "z": "f65674da3fcd3bc3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "69e8629c4b57ca2a"
+            ]
+        ]
+    },
+    {
+        "id": "69e8629c4b57ca2a",
+        "type": "function",
+        "z": "f65674da3fcd3bc3",
+        "name": "error",
+        "func": "msg.level=\"error\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "d899cbf16e5b8658"
+            ]
+        ]
+    },
+    {
+        "id": "a19acac49f850c2b",
+        "type": "comment",
+        "z": "f65674da3fcd3bc3",
+        "name": "log level = {   emerg: 0,   alert: 1,   crit: 2,   error: 3,   warning: 4,   notice: 5,   info: 6,   debug: 7 }",
+        "info": "log level = {\n  emerg: 0,\n  alert: 1,\n  crit: 2,\n  error: 3,\n  warning: 4,\n  notice: 5,\n  info: 6,\n  debug: 7\n}",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    }
+]

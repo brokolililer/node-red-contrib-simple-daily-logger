@@ -1,0 +1,27 @@
+{
+  "name": "node-red-contrib-simple-daily-logger",
+  "version": "1.0.1",
+  "description": "A Node-RED node that creates a file-based logging system.",
+  "license": "MIT",
+  "dependencies": {
+    "winston": "3.15.0",
+    "winston-daily-rotate-file": "5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brokolililer/node-red-contrib-simple-daily-logger.git"
+  },
+  "keywords": [
+    "node-red",
+    "daily-logger"
+  ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "daily-logger": "simple-daily-logger/daily-logger.js"
+    }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
