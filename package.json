@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-simple-daily-logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Node-RED node that creates a file-based logging system.",
   "license": "MIT",
   "dependencies": {
